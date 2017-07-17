@@ -23,5 +23,9 @@ angular.module('Alice').value('taskList', [
     {
         title: 'Arriver au Japon',
         photo: null
+    },
+    {
+	title: 'Prendre un bain japonais (Onsen)',
+	photo: null
     }
 ]);
