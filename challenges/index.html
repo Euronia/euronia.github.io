@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app="Alice">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charles &amp; Thibault : Défis Japonais</title>
+  <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Roboto:100,300'>
+  <link rel="stylesheet" type="text/css" href="styles/reset.css">
+  <link rel="stylesheet" type="text/css" href="styles/fonts.css">
+  <link rel="stylesheet" type="text/css" href="styles/base.css">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/taskList.js"></script>
+  <script src="js/TasksCtrl.js"></script>
+</head>
+<body ng-controller="TasksCtrl">
+
+<header>
+  <div class="container">
+
+    <nav class="app-nav">
+      <div class="app-nav-group">
+        <a class="app-nav-item alice-tap-animation"
+           ng-class="{'alice-view-module': !isGallery, 'alice-view-list': isGallery}"
+           ng-click="isGallery = !isGallery"></a>
+        <a class="app-nav-item alice-uniE600 alice-tap-animation"
+           href="https://www.facebook.com/pages/Voyage-au-Japon/436716066468871"></a>
+      </div>
+    </nav>
+
+    <h1 class="app-title">Défis Japonais</h1>
+    <div class="challenger">Charles &amp; Thibault</div>
+  </div>
+</header>
+
+<section class="container">
+
+  <!--
+  == Task list
+  ================= -->
+
+  <ul class="task-list" ng-if="!isGallery">
+
+    <li class="task"
+        ng-repeat="task in tasks track by task.title"
+        ng-class="{'task-done': isDone(task), 'task-unwrap': task.isUnwrapped}">
+
+      <div class="task-header"
+           ng-click="toggleUnwrapTask(task)">
+        <div class="task-tick v-align"
+             ng-class="isDone(task) ? 'alice-done' : 'alice-access-time'">
+        </div>
+        <div class="task-title v-align">
+          {{ task.title }}
+        </div>
+        <div class="task-action alice-expand-more"
+             ng-if="isDone(task)">
+        </div>
+      </div>
+
+      <div class="task-body">
+        <a ng-href="{{ task.photo }}">
+          <img class="task-image"
+               ng-src="{{ task.isUnwrapped ? getPhoto(task) : null }}"
+               width="100%">
+        </a>
+      </div>
+
+    </li>
+
+  </ul>
+
+  <!--
+  == Image gallery
+  ================= -->
+
+  <ul class="gallery" ng-if="isGallery">
+
+    <li class="gallery-item"
+        ng-repeat="task in tasks | filter:isDone track by task.title">
+      <a class="gallery-item-image"
+         ng-href="{{ task.photo }}"
+         ng-style="{'background-image': 'url(' + getPhoto(task) + ')'}">
+      </a>
+    </li>
+
+  </ul>
+
+</section>
+
+</body>
+</html>
