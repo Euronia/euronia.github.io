@@ -1,7 +1,5 @@
 # Défis Japonais 0.1.2
 
-All credits go to [kiroxas](https://github.com/kiroxas/kiroxas.github.io)
-
 **がんばってね！**
 
 ## Usage

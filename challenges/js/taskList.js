@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 /**
  * List of tasks to accomplish.
