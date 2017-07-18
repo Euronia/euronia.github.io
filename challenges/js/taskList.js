@@ -27,5 +27,9 @@ angular.module('Alice').value('taskList', [
     {
 	title: 'Prendre un bain japonais (Onsen)',
 	photo: null
+    },
+    {
+	title: 'Etre pris en photo avec 2 cosplayeuses',
+	photo: null
     }
 ]);
